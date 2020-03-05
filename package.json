@@ -6,7 +6,7 @@
     "test": "tests"
   },
   "scripts": {
-    "start": "ember server",
+    "start": "ember server -p 4212",
     "build": "ember build",
     "test": "ember try:testall"
   },
@@ -39,7 +39,9 @@
   },
   "dependencies": {
     "ember-cli-babel": "^5.1.5",
-    "ember-cli-htmlbars": "^1.0.1"
+    "ember-cli-htmlbars": "^1.0.1",
+    "imagesloaded": "^4.1.4",
+    "masonry-layout": "^4.2.2"
   },
   "description": "Quickly and easily add masonry layouts to your app.",
   "keywords": [
