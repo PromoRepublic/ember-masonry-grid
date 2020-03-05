@@ -1,21 +1,13 @@
 /* global imagesLoaded, Masonry */
-import Ember from 'ember';
 import layout from './template';
+import {A} from '@ember/array';
+import Component from '@ember/component';
+import {htmlSafe} from '@ember/template';
+import {tryInvoke} from '@ember/utils';
+import {scheduleOnce} from '@ember/runloop';
+import {computed, get, set, defineProperty, getProperties} from '@ember/object';
 
-const {
-  Component,
-  computed,
-  defineProperty,
-  getProperties,
-  get,
-  set
-} = Ember;
-
-const {
-  htmlSafe
-} = Ember.String;
-
-const MASONRY_OPTION_KEYS = Ember.A([
+const MASONRY_OPTION_KEYS = A([
   'containerStyle',
   'columnWidth',
   'gutter',
@@ -82,7 +74,7 @@ export default Component.extend({
 
     let masonry = get(this, 'masonry');
 
-    Ember.run.scheduleOnce('afterRender', this, () => {
+    scheduleOnce('afterRender', this, () => {
       let _f = () => {
         if (masonry) {
           masonry.reloadItems();
@@ -91,7 +83,7 @@ export default Component.extend({
           masonry = set(this, 'masonry', new Masonry(get(this, 'element'), options));
 
           masonry.on('layoutComplete', (layout) => {
-            this.sendAction('onLayoutComplete', layout);
+            tryInvoke(this, 'onLayoutComplete', [layout]);
           });
         }
 

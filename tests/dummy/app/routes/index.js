@@ -25,25 +25,9 @@ export default Route.extend({
     return model;
   },
 
-  actions: {
-    appendItem(model) {
-      this._appendItemToModel(model);
-    },
-
-    prependItem(model) {
-      this._prependItemToModel(model);
-    }
-  },
-
   _appendItemToModel(model) {
     Ember.run(() => {
       model.pushObject(Object.create(this.get('item')));
-    });
-  },
-
-  _prependItemToModel(model) {
-    Ember.run(() => {
-      model.insertAt(0, Object.create(this.get('item')));
     });
   }
 });

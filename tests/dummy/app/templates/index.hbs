@@ -1,12 +1,14 @@
-<button {{action 'switchObjects'}}>Switch Models</button>
-<button {{action 'appendItem' currentObject}}>Append Item</button>
-<button {{action 'prependItem' currentObject}}>Prepend Item</button>
-<button {{action 'switchGutter'}}>Switch Gutter</button>
+<button {{action this.switchObjects}}>Switch Models</button>
+<button {{action this.appendItem}}>Append Item</button>
+<button {{action this.prependItem}}>Prepend Item</button>
+<button {{action this.switchGutter}}>Switch Gutter</button>
 
-{{#masonry-grid items=currentObject gutter=gutter
-  onLayout=(action 'onLayout')
-  onLayoutComplete=(action 'onLayoutComplete')
-  onItemClick=(action 'onItemClick')
-as |item|}}
-  <img src="{{item.imgsrc}}"><br>
-{{/masonry-grid}}
+<MasonryGrid
+        @items={{this.currentObject}}
+        @gutter={{this.gutter}}
+        @onLayout={{action this.onLayout}}
+        @onLayoutComplete={{action this.onLayoutComplete}}
+        @onItemClick={{action this.onItemClick}}
+        as |item|>
+  <img src={{item.imgsrc}}><br>
+</MasonryGrid>
