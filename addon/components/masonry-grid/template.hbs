@@ -1,9 +1,12 @@
-  {{#each items as |item index|}}
-    {{#if customLayout}}
+{{#each items as |item index|}}
+  {{#if customLayout}}
+    {{yield item index this}}
+  {{else}}
+    <MasonryItem
+            @grid={{this}}
+            @item={{item}}
+            @onItemClick={{onItemClick}}>
       {{yield item index this}}
-    {{else}}
-      {{#masonry-item grid=this item=item onItemClick=onItemClick}}
-        {{yield item index this}}
-      {{/masonry-item}}
-    {{/if}}
-  {{/each}}
+    </MasonryItem>
+  {{/if}}
+{{/each}}

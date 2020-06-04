@@ -6,7 +6,7 @@ module.exports = {
   },
 
   afterInstall: function () {
-    return this.addBowerPackagesToProject([
+    return this.addPackagesToProject([
       { name: 'masonry' },
       { name: 'imagesloaded' }
     ]);

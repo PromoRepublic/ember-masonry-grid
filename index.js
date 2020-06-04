@@ -1,4 +1,3 @@
-/* jshint node: true */
 'use strict';
 
 module.exports = {
@@ -9,13 +8,13 @@ module.exports = {
 
     if (!process.env.EMBER_CLI_FASTBOOT) {
       app.import({
-        development: app.bowerDirectory + '/masonry/dist/masonry.pkgd.js',
-        production: app.bowerDirectory + '/masonry/dist/masonry.pkgd.min.js'
+        development: 'node_modules/masonry-layout/dist/masonry.pkgd.js',
+        production: 'node_modules/masonry-layout/dist/masonry.pkgd.min.js'
       });
 
       app.import({
-        development: app.bowerDirectory + '/imagesloaded/imagesloaded.pkgd.js',
-        production: app.bowerDirectory + '/imagesloaded/imagesloaded.pkgd.min.js'
+        development: 'node_modules/imagesloaded/imagesloaded.pkgd.js',
+        production: 'node_modules/imagesloaded/imagesloaded.pkgd.min.js'
       });
     }
   }

@@ -1,21 +1,26 @@
 import Ember from 'ember';
-
+import EmberObject, { computed } from '@ember/object';
 const {
   Controller,
   get,
-  set
+  set,
+  run
 } = Ember;
 
 export default Controller.extend({
   first: true,
+  item: {
+    imgsrc: 'http://placehold.it/350x150',
+    name: 'Mittens'
+  },
 
-  currentObject: Ember.computed('first', 'model', function() {
+  currentObject: computed('first', 'model', function () {
     let modelIndex = this.get('first') ? 0 : 1;
 
     return this.get('model').objectAt(modelIndex);
   }),
 
-  actions: {
+  // actions: {
     switchObjects() {
       this.toggleProperty('first');
     },
@@ -37,8 +42,20 @@ export default Controller.extend({
 
     onItemClick(ev, item) {
       Ember.run(() => {
-        get(this, 'currentObject').removeObject(item);
+        this.get('currentObject').removeObject(item);
+      });
+    },
+
+    appendItem() {
+      run(() => {
+        this.get('currentObject').pushObject(Object.create(this.get('item')));
+      });
+    },
+
+    prependItem(model) {
+      run(() => {
+        this.get('currentObject').insertAt(0, Object.create(this.get('item')));
       });
     }
-  }
+  // }
 });
