@@ -79,12 +79,11 @@ export default Component.extend({
         if (masonry) {
           masonry.reloadItems();
         } else {
+          if (this.isDestroyed || this.isDestroying || !this.element) return;
+
           const options = get(this, 'options');
           masonry = set(this, 'masonry', new Masonry(get(this, 'element'), options));
-
-          masonry.on('layoutComplete', (layout) => {
-            tryInvoke(this, 'onLayoutComplete', [layout]);
-          });
+          masonry.on('layoutComplete', layout => tryInvoke(this, 'onLayoutComplete', [layout]));
         }
 
         masonry.layout();
