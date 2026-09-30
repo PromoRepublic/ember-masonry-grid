@@ -4,7 +4,7 @@ module.exports = {
   name: 'ember-masonry-grid',
 
   included: function (app) {
-    this._super.included(app);
+    this._super.included.apply(this, arguments);
 
     if (!process.env.EMBER_CLI_FASTBOOT) {
       app.import({

@@ -1,11 +1,11 @@
-{{#each items as |item index|}}
-  {{#if customLayout}}
+{{#each this.items as |item index|}}
+  {{#if this.customLayout}}
     {{yield item index this}}
   {{else}}
     <MasonryItem
             @grid={{this}}
             @item={{item}}
-            @onItemClick={{onItemClick}}>
+            @onItemClick={{this.onItemClick}}>
       {{yield item index this}}
     </MasonryItem>
   {{/if}}

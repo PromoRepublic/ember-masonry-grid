@@ -1,6 +1,6 @@
 {
   "name": "ember-masonry-grid",
-  "version": "2.0.1",
+  "version": "2.1.0",
   "description": "Quickly and easily add masonry layouts to your app.",
   "keywords": [
     "ember-addon",
@@ -25,7 +25,7 @@
   },
   "dependencies": {
     "ember-cli-babel": "^7.17.2",
-    "ember-cli-htmlbars": "^4.2.2",
+    "ember-cli-htmlbars": "^6.3.0",
     "imagesloaded": "^4.1.4",
     "masonry-layout": "3.3.2"
   },

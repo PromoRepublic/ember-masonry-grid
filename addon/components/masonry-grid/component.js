@@ -1,9 +1,8 @@
 /* global imagesLoaded, Masonry */
-import layout from './template';
+import layout from '../../templates/components/masonry-grid';
 import {A} from '@ember/array';
 import Component from '@ember/component';
 import {htmlSafe} from '@ember/template';
-import {tryInvoke} from '@ember/utils';
 import {scheduleOnce} from '@ember/runloop';
 import {computed, get, set, defineProperty, getProperties} from '@ember/object';
 
@@ -83,7 +82,11 @@ export default Component.extend({
 
           const options = get(this, 'options');
           masonry = set(this, 'masonry', new Masonry(get(this, 'element'), options));
-          masonry.on('layoutComplete', layout => tryInvoke(this, 'onLayoutComplete', [layout]));
+          masonry.on('layoutComplete', layout => {
+            if (typeof this.onLayoutComplete === 'function') {
+              this.onLayoutComplete(layout);
+            }
+          });
         }
 
         masonry.layout();
